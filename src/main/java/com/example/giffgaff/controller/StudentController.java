@@ -27,7 +27,7 @@ public class StudentController {
 	  Student student;
 	 
 	  @RequestMapping("/studentApp")
-	public String welcomeUser() {    
+	public String welcomeUser(Model model) {    
 		  
 		  System.out.println("Please choose the required option from below");
 		  System.out.println("1. Show All The Student Details");
@@ -57,6 +57,7 @@ public class StudentController {
 	            break; 
 	        } 
 	        
+	        model.addAttribute("name", "WELCOME TO STUDENT APPLICATION");
 	        return "Success";
 	     
 		}
@@ -119,12 +120,12 @@ public class StudentController {
 		 System.out.println("Please enter student ID");
 		 Scanner in = new Scanner(System.in);
 		 
-		 String stud_id = in.nextLine();
+		 String id = in.nextLine();
 		  
 		  System.out.println("Please find the entered Student Details below");
 		  
 		  
-		  Student studentDetails = studservice.getStudDetail(Integer.parseInt(stud_id));
+		  Student studentDetails = studservice.getStudDetail(Integer.parseInt(id));
 		  
 		  System.out.println("SID\t"+"SName\t"+"Marks\t");
 		  System.out.println("=======================");

@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Text Snippet Application</title>
+<title>Student Application</title>
 </head>
 <body>
-URL to retrieve text Snippet is : 
-<br>
-http://localhost:8080/textSnippet/editText?texttoedit=${name}
-<br>
-<br>
-<a href="http://localhost:8080/textSnippet/editText?texttoedit=${name}">Click here to open</a>
+${name}
 
 </body>
 </html>
