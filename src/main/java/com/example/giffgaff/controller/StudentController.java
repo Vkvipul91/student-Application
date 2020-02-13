@@ -26,7 +26,7 @@ public class StudentController {
 	 
 	  @RequestMapping("/studentApp")
 	public String welcomeUser() {    
-		Scanner in = new Scanner(System.in);
+		  Scanner in = new Scanner(System.in);
 	    System.out.println("Please enter student details:");
 	    
 	    System.out.println("Enter Student ID: ");
