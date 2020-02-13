@@ -3,7 +3,6 @@ package com.example.giffgaff.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.example.giffgaff.dao.StudDao;
 import com.example.giffgaff.model.SortByMarks;
 import com.example.giffgaff.model.Student;
-import com.example.giffgaff.service.StudService;
 import com.example.giffgaff.serviceImpl.StudServiceImpl;
 @Repository
 public class StudDaoImpl implements	StudDao{
@@ -66,12 +64,13 @@ public class StudDaoImpl implements	StudDao{
     		student.setTotal_marks(rs.getString(3));
     		
     		studentList.add(student);
-    		System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+    		//System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
     		}
     		Collections.sort(studentList,new SortByMarks());
-    		for(int i=0;i<studentList.size();i++) {
-    			System.out.println(studentList.get(i).getName());
-    		}
+			/*
+			 * for(int i=0;i<studentList.size();i++) {
+			 * System.out.println(studentList.get(i).getName()); }
+			 */
     		mysqlConnection.closeConnection();
 	}catch(Exception e){ 
 		System.out.println(e);
@@ -95,7 +94,7 @@ public class StudDaoImpl implements	StudDao{
 		stud.setName(rs.getString(2));
 		stud.setTotal_marks(rs.getString(3));
 		
-		System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+		//System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
 		}
 		
 		service.serializeStudent(stud);
@@ -114,7 +113,7 @@ public class StudDaoImpl implements	StudDao{
 		// TODO Auto-generated method stub
 		try {
 			Connection conn=mysqlConnection.getConnection();
-			PreparedStatement ps=conn.prepareStatement("select * from student order by total_marks limit 1");  
+			PreparedStatement ps=conn.prepareStatement("select * from student order by total_marks desc limit 1");  
 	        ResultSet rs=ps.executeQuery();  		
 					
 			while(rs.next()) {  
@@ -122,7 +121,7 @@ public class StudDaoImpl implements	StudDao{
 			stud.setName(rs.getString(2));
 			stud.setTotal_marks(rs.getString(3));
 			
-			System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+			//System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
 			}
 			mysqlConnection.closeConnection();
 		}catch(Exception e){ 

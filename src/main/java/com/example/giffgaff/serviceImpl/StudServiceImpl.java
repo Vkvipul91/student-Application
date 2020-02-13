@@ -62,7 +62,7 @@ public class StudServiceImpl implements StudService {
 		out.writeObject(student);  
 		out.flush();  
 		out.close();  //closing the stream  
-		System.out.println("success");  
+		//System.out.println("success");  
 		}catch(Exception e){System.out.println(e);}
 	}
 
@@ -74,7 +74,7 @@ public class StudServiceImpl implements StudService {
 			  ObjectInputStream in=new ObjectInputStream(new FileInputStream("student.txt"));  
 			  Student student=(Student)in.readObject();  
 			  //printing the data of the serialized object  
-			  System.out.println(student.getStud_id()+" "+student.getName()+" "+student.getTotal_marks());  
+			  //System.out.println(student.getStud_id()+" "+student.getName()+" "+student.getTotal_marks());  
 			  //closing the stream  
 			  in.close();  
 			  }catch(Exception e){System.out.println(e);}  

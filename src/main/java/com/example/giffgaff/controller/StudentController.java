@@ -1,5 +1,7 @@
 package com.example.giffgaff.controller;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,27 +28,108 @@ public class StudentController {
 	 
 	  @RequestMapping("/studentApp")
 	public String welcomeUser() {    
-		Scanner in = new Scanner(System.in);
-	    System.out.println("Please enter student details:");
-	    
-	    System.out.println("Enter Student ID: ");
-		String stud_id = in.nextLine();
-		
-		System.out.println("Enter Student Name: ");
-		String name = in.nextLine();
-		
-		System.out.println("Enter Student Total Marks: ");
-		String total_marks = in.nextLine();
-		
-				
-		student.setStud_id(Integer.parseInt(stud_id));  
-		student.setName(name);
-		student.setTotal_marks(total_marks);
-		int status = studservice.insertData(student);
-		if(status != 0)
-			System.out.println("Successfully Inserted !!!");
-		
-		return "Successfully Inserted";
-	
-	}
+		  
+		  System.out.println("Please choose the required option from below");
+		  System.out.println("1. Show All The Student Details");
+		  System.out.println("2. Show Student Details");
+		  System.out.println("3. Show Heighest Marks Student");
+		  System.out.println("4. Add Student");
+		  Scanner in = new Scanner(System.in);
+		  
+		  int option = Integer.parseInt(in.next()); 
+	  
+	        switch (option) { 
+	        case 1: 
+	        	getAllStudentData();
+	            break; 
+	        case 2: 
+	        	getStudent();
+	            break; 
+	        case 3: 
+	        	getTopStudent();
+	            break; 
+	        case 4: 
+	        	addStudent();
+	            break; 
+	        
+	        default: 
+	            System.out.println("Please Select Required Option");
+	            break; 
+	        } 
+	        
+	        return "Success";
+	     
+		}
+	  
+	 
+	public void addStudent() {
+		  
+		  Scanner in = new Scanner(System.in);
+		    System.out.println("Please enter student details:");
+		    
+		    System.out.println("Enter Student ID: ");
+			String stud_id = in.nextLine();
+			
+			System.out.println("Enter Student Name: ");
+			String name = in.nextLine();
+			
+			System.out.println("Enter Student Total Marks: ");
+			String total_marks = in.nextLine();
+			
+					
+			student.setStud_id(Integer.parseInt(stud_id));  
+			student.setName(name);
+			student.setTotal_marks(total_marks);
+			int status = studservice.insertData(student);
+			if(status != 0)
+				System.out.println("Successfully Inserted !!!");
+	  }
+	  
+	  public void getAllStudentData() {
+		  System.out.println("######## Student Details #########");
+		  List<Student> students = studservice.fetchData();
+		  System.out.println("SID\t"+"SName\t"+"Marks\t");
+		  System.out.println("=======================");		  
+		  for (Student student : students) {
+			System.out.print(student.getStud_id()+"\t"+student.getName()+"\t"+student.getTotal_marks());
+			System.out.println();
+		}
+		  
+		System.out.println("######## Student Datetails #########");
+		  
+	  }
+	  
+	  public void getTopStudent() {
+		  
+		  System.out.println("Please find the top Student Details below");
+		  
+		  Student topStudent = studservice.highestMarksStudent();
+		  
+		  System.out.println("SID\t"+"SName\t"+"Marks\t");
+		  System.out.println("=======================");		  
+		  System.out.print(topStudent.getStud_id()+"\t"+topStudent.getName()+"\t"+topStudent.getTotal_marks());
+		  System.out.println("Student details has been serialized !!");
+		  
+		  
+	  }
+	  
+	  public void getStudent() {
+		  
+		  
+		 System.out.println("Please enter student ID");
+		 Scanner in = new Scanner(System.in);
+		 
+		 String stud_id = in.nextLine();
+		  
+		  System.out.println("Please find the entered Student Details below");
+		  
+		  
+		  Student studentDetails = studservice.getStudDetail(Integer.parseInt(stud_id));
+		  
+		  System.out.println("SID\t"+"SName\t"+"Marks\t");
+		  System.out.println("=======================");
+		  
+		  System.out.println(studentDetails.getStud_id()+"\t"+studentDetails.getName()+"\t"+studentDetails.getTotal_marks());
+		  
+	  }
 }
