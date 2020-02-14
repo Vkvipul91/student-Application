@@ -27,7 +27,7 @@ public class StudDaoImpl implements	StudDao{
 	Student stud;
 	
 	
-
+//This method will insert the student details to database
 	@Override
 	public int insertData(Student student) {
 		// TODO Auto-generated method stub
@@ -47,6 +47,8 @@ public class StudDaoImpl implements	StudDao{
 	        return status; 
 	}
 
+	
+	//This method will fetch data of all students and sort it as per total marks scored in desc order	
 	@Override
 	public List<Student> fetchData() {
 		// TODO Auto-generated method stub
@@ -80,6 +82,7 @@ public class StudDaoImpl implements	StudDao{
 		
 	}
 
+	//This method will search the student details in database	
 	@Override
 	public Student getStudDetail(int id) {
 		// TODO Auto-generated method stub
@@ -107,7 +110,7 @@ public class StudDaoImpl implements	StudDao{
 		
 		return stud;
 	}
-
+	//This method will search the highest score student and serialize the details to file
 	@Override
 	public Student highestMarksStud() {
 		// TODO Auto-generated method stub

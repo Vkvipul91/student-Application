@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class MysqlConnection {
+public class MysqlConnection {   //This method will create connection to database
 
 	Connection conn;
 	public Connection getConnection() {
@@ -25,7 +25,7 @@ public class MysqlConnection {
 		
 	}
 	
-	public void closeConnection() {
+	public void closeConnection() {  //This method will close connection to database
 		try {
 			conn.close();
 		} catch (SQLException e) {
