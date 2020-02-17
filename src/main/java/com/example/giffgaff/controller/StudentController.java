@@ -32,8 +32,8 @@ public class StudentController {
 		  System.out.println("Please choose the required option from below");
 		  System.out.println("1. Show All The Student Details");
 		  System.out.println("2. Show Student Details");
-		  System.out.println("3. Show Heighest Marks Student");
-		  System.out.println("4. Add Student");
+		  System.out.println("3. Show Highest Marks Student");
+		  System.out.println("4. Add new student Student");
 		  Scanner in = new Scanner(System.in);
 		  
 		  int option = Integer.parseInt(in.next()); 
